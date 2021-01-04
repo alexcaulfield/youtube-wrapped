@@ -17,7 +17,7 @@ const DataInput = () => {
     const file = event.target.files[0];
     
     const readFile = new FileReader();
-    readFile.readAsBinaryString(file);
+    readFile.readAsText(file);
 
     readFile.onloadend = function(){
       const parser = new DOMParser();
