@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 
 const Results = ({topChannels, topVideos}) => (
   <>
-        <Typography variant="h5" gutterBottom>
+      <Typography variant="h5" gutterBottom>
         Your Top Channels
       </Typography>
       {topChannels.slice(0, 5).map((value,key) => {

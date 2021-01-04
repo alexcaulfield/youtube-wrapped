@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {splitChannelsAndVideos, sortTopResults} from '../utils/parse_data';
+import Typography from '@material-ui/core/Typography';
 
 const DataInput = ({setTopChannels, setTopVideos, setActiveStep}) => {
   const loadHistoryData = event => {
@@ -25,6 +26,15 @@ const DataInput = ({setTopChannels, setTopVideos, setActiveStep}) => {
   
   return (
     <>
+      <Typography variant="body1" gutterBottom>
+        Extract the .zip file you've received
+      </Typography>
+      <Typography variant="h5" gutterBottom>
+        Upload your watch-history.html file!
+      </Typography>
+      <Typography variant="body2" gutterBottom>
+        Which is under Takeout &gt; YouTube and YouTube Music &gt; history &gt; watch-history.html  
+      </Typography>
       <form>   
         <input
           type="file"
