@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {useState} from 'react';
-import {splitChannelsAndVideos, sortTopResults, parseDates} from '../utils/parse_data';
+import {sortTopResults, parseData} from '../utils/parse_data';
 import Typography from '@material-ui/core/Typography';
 import { DatePicker } from '@material-ui/pickers';
 import moment from "moment";
@@ -23,9 +23,7 @@ const DataInput = ({setTopChannels, setTopVideos, setActiveStep}) => {
     readFile.onloadend = function(){
       const parser = new DOMParser();
       const parsedHtml = parser.parseFromString(readFile.result.toString(), 'text/html');
-      const results = parseDates(parsedHtml.getElementsByClassName("content-cell"), selectedDate);
-      // const links = parsedHtml.getElementsByTagName("a");
-      // const results = splitChannelsAndVideos(links);
+      const results = parseData(parsedHtml.getElementsByClassName("content-cell"), selectedDate);
       const sortedChannels = sortTopResults(results.channels);
       const sortedVideos = sortTopResults(results.videos);
       const channelArray = Array.from(sortedChannels).slice(0, 20);

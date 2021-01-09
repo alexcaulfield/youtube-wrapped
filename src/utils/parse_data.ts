@@ -1,46 +1,17 @@
 import moment from "moment";
 
-export const splitChannelsAndVideos = links => {
-  const linkArray = Array.from(links);
-  let channels = new Map(); // map of {channelName: numVideosWatched}
-  let videos = new Map(); // map of {videoName: numTimesWatched}
-  
-  linkArray.forEach(link => {
-    if (link.href.match(/channel*/)) {
-      const channel = link.innerHTML;
-      if (channels.has(channel)) {
-        channels.set(channel, channels.get(channel) + 1);
-      } else {
-        channels.set(channel, 1)
-      }
-    } else if (link.href.match(/watch*/)) {
-      const video = link.innerHTML;
-      if (videos.has(video)) {
-        videos.set(video, videos.get(video) + 1);
-      } else {
-        videos.set(video, 1)
-      }
-    }
-  })
-
-  return {
-    channels: channels,
-    videos: videos,
-  }
-}
-
 export const sortTopResults = map => {
   return new Map([...map.entries()].sort((a, b) => b[1] - a[1]));
 }
 
 const dateRegex = /(.*)(((Jan(uary)?|Feb(ruary)?|Mar(ch)?|Apr(il)?|May|Jun(e)?|Jul(y)?|Aug(ust)?|Sep(tember)?|Oct(ober)?|Nov(ember)?|Dec(ember)?)\s+\d{1,2},\s+\d{4}))(.*)/;
 
-export const parseDates = (domElements, yearMoment) => {
+export const parseData = (domElements, yearMoment) => {
   const elements = Array.from(domElements);
 
   let channels = new Map(); // map of {channelName: numVideosWatched}
   let videos = new Map(); // map of {videoName: numTimesWatched}  
-  
+
   elements.forEach(elem => {
     let links = elem.getElementsByTagName("a");
     let linkArray = Array.from(links)
