@@ -10,7 +10,8 @@ export const parseData = (domElements, yearMoment) => {
   const elements = Array.from(domElements);
 
   let channels = new Map(); // map of {channelName: numVideosWatched}
-  let videos = new Map(); // map of {videoName: numTimesWatched}  
+  let videos = new Map(); // map of {videoName: numTimesWatched}
+  let months = new Map();  
 
   elements.forEach(elem => {
     let links = elem.getElementsByTagName("a");
@@ -21,6 +22,13 @@ export const parseData = (domElements, yearMoment) => {
       if (match && match.length > 2) {
         const isWrappedYear = moment(yearMoment).isSame(moment(match[2]), 'year');
         if (isWrappedYear) {
+          const month = moment(match[2]).format('MMMM');
+          if (months.has(month)) {
+            months.set(month, months.get(month) + 1);
+          } else {
+            months.set(month, 1)
+          }
+
           const video = linkArray[0].innerHTML;
           if (videos.has(video)) {
             videos.set(video, videos.get(video) + 1);
@@ -41,5 +49,6 @@ export const parseData = (domElements, yearMoment) => {
   return {
     channels: channels,
     videos: videos,
+    months: months,
   }
 }

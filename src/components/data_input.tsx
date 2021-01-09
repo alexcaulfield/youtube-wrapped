@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import { DatePicker } from '@material-ui/pickers';
 import moment from "moment";
 
-const DataInput = ({setTopChannels, setTopVideos, setActiveStep}) => {
+const DataInput = ({setTopChannels, setTopVideos, setActiveStep, setMonths}) => {
   const now = moment.utc(new Date(), 'YYYY');
   const [selectedDate, handleDateChange] = useState(now);
 
@@ -30,6 +30,7 @@ const DataInput = ({setTopChannels, setTopVideos, setActiveStep}) => {
       const videoArray = Array.from(sortedVideos).slice(0, 20);
       setTopChannels(channelArray)
       setTopVideos(videoArray)
+      setMonths(Array.from(sortTopResults(results.months)));
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
     }
   }

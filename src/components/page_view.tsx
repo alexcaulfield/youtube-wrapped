@@ -18,6 +18,7 @@ const PageView = () => {
   const [topChannels, setTopChannels] = useState([])
   // top 20 videos
   const [topVideos, setTopVideos] = useState([])
+  const [months, setMonths] = useState([])
 
   const renderStep = () => {
     switch (activeStep) {
@@ -26,9 +27,9 @@ const PageView = () => {
       case 0:
         return <GoogleTakeout setActiveStep={setActiveStep}/>;
       case 1:
-        return <DataInput setTopChannels={setTopChannels} setTopVideos={setTopVideos} setActiveStep={setActiveStep} />;
+        return <DataInput setTopChannels={setTopChannels} setTopVideos={setTopVideos} setActiveStep={setActiveStep} setMonths={setMonths} />;
       case 2:
-        return <Results topChannels={topChannels} topVideos={topVideos} />;
+        return <Results topChannels={topChannels} topVideos={topVideos} months={months}/>;
     }
   }
   return (
