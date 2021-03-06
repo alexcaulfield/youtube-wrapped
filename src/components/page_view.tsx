@@ -13,14 +13,14 @@ import Landing from './landing';
 const STEPS = ['Go to Google Takeout', 'Upload Watch History', 'Get Results!'];
 
 const PageView = () => {
-  const [activeStep, setActiveStep] = useState(-1);
+  const [activeStep, setActiveStep] = useState<number>(-1);
   // top 20 channels
-  const [topChannels, setTopChannels] = useState([])
+  const [topChannels, setTopChannels] = useState<string[]>([])
   // top 20 videos
-  const [topVideos, setTopVideos] = useState([])
-  const [months, setMonths] = useState([])
+  const [topVideos, setTopVideos] = useState<string[]>([])
+  const [months, setMonths] = useState<string[]>([])
 
-  const renderStep = () => {
+  const renderStep = (): JSX.Element => {
     switch (activeStep) {
       case -1:
         return <Landing setActiveStep={setActiveStep} />;
