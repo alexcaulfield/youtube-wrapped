@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   body: {
     marginBottom: theme.spacing(2),
   },
-  buttonWrapper: {
+  buttonContainer: {
     display: 'block',
     marginBottom: theme.spacing(2),
   },
@@ -28,7 +28,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       flexDirection: 'row',
     },
-
   },
   imgColumn: {
     marginRight: theme.spacing(2),
@@ -108,7 +107,7 @@ const GoogleTakeout = ({setActiveStep}) => {
         />
       </div>
     </div>
-    <div className={classes.buttonWrapper}>
+    <div className={classes.buttonContainer}>
       <Button
         variant="contained"
         color="secondary"

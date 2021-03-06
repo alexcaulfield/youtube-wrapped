@@ -2,10 +2,32 @@ import * as React from 'react';
 import {useState} from 'react';
 import {sortTopResults, parseData} from '../utils/parse_data';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import { DatePicker } from '@material-ui/pickers';
 import moment from "moment";
+import {makeStyles} from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  body: {
+    marginBottom: theme.spacing(2),
+  },
+  datePicker: {
+    width: '100%',
+    [theme.breakpoints.up('md')]: {
+      width: '20%',
+    },
+  },
+  buttonContainer: {
+    display: 'block',
+    marginBottom: theme.spacing(2),
+  },
+  button: {
+    marginRight: theme.spacing(2),
+  },
+}));
 
 const DataInput = ({setTopChannels, setTopVideos, setActiveStep, setMonths}) => {
+  const classes = useStyles();
   const now = moment.utc(new Date(), 'YYYY');
   const [selectedDate, setSelectedDate] = useState(now);
 
@@ -37,34 +59,52 @@ const DataInput = ({setTopChannels, setTopVideos, setActiveStep, setMonths}) => 
   
   return (
     <>
-      <Typography variant="body1" gutterBottom>
-        Extract the .zip file you've received
+      <Typography variant="body1" gutterBottom className={classes.body}>
+        Extract the <code>.zip</code> file you've received
       </Typography>
-      <Typography variant="h5" gutterBottom>
-        Upload your watch-history.html file!
+      <Typography variant="h5" gutterBottom className={classes.body}>
+        Upload your <code>watch-history.html</code> file!
       </Typography>
-      <Typography variant="body2" gutterBottom>
-        Which is under Takeout &gt; YouTube and YouTube Music &gt; history &gt; watch-history.html  
+      <Typography variant="body2" gutterBottom className={classes.body}>
+        Which is under <code>Takeout &gt; YouTube and YouTube Music &gt; history &gt; watch-history.html</code>  
       </Typography>
-
-      <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" gutterBottom className={classes.body}>
         Pick a year when you upload your watch history!
       </Typography>
-      <DatePicker
-      autoOk
-      variant="static"
-        views={["year"]}
-        label="Wrapped Year"
-        value={selectedDate}
-        onChange={handleDateChange}
-      />
-      <form>   
+      <div className={classes.datePicker}>
+        <DatePicker
+          autoOk
+          variant="static"
+          views={["year"]}
+          label="Wrapped Year"
+          value={selectedDate}
+          onChange={handleDateChange}
+        />
+      </div>
+
+      <div className={classes.buttonContainer}>
+      <Button
+        variant="contained"
+        color="secondary"
+        onClick={() => setActiveStep((prevActiveStep) => prevActiveStep - 1)}
+        className={classes.button}
+      >
+        Back
+      </Button>
+      <Button
+        variant="contained"
+        color="primary"
+        component="label"
+      >
+        Upload Watch History
         <input
           type="file"
+          hidden
           value=''
           onChange={loadHistoryData}
         />
-      </form> 
+      </Button>
+    </div>
     </>
   )
 }

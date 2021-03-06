@@ -29,7 +29,7 @@ const PageView = () => {
       case 1:
         return <DataInput setTopChannels={setTopChannels} setTopVideos={setTopVideos} setActiveStep={setActiveStep} setMonths={setMonths} />;
       case 2:
-        return <Results topChannels={topChannels} topVideos={topVideos} months={months}/>;
+        return <Results topChannels={topChannels} topVideos={topVideos} months={months} setActiveStep={setActiveStep}/>;
     }
   }
   return (
