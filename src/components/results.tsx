@@ -25,84 +25,89 @@ const Results = ({topChannels, topVideos, months, setActiveStep}) => {
   }
   return (
     <>
-        <Typography variant="h5" gutterBottom>
-          Your Top Channels
-        </Typography>
-        {topChannels.slice(0, 5).map((value,key) => {
-          return (
-            <Card>
-              <CardHeader
-                avatar={
-                  <Avatar aria-label="Channel name">
-                    R
-                  </Avatar>
-                }
-                title={value[0]}
-                subheader=""
-              />
-              <CardContent>
-                <Typography variant='subtitle2' gutterBottom>
-                  Stats
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Number of videos watched: {value[1]}
-                </Typography>
-              </CardContent>
-            </Card>
-          )
-        })}
-        <Typography variant="h5" gutterBottom>
-          Your Top Videos
-        </Typography>
-        {topVideos.slice(0, 5).map((value,key) => {
-          return (
-            <Card>
-              <CardHeader
-                avatar={
-                  <Avatar aria-label="Channel name">
-                    R
-                  </Avatar>
-                }
-                title={value[0]}
-                subheader=""
-              />
-              <CardContent>
-                <Typography variant='subtitle2' gutterBottom>
-                  Stats
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Number of times watched: {value[1]}
-                </Typography>
-              </CardContent>
-            </Card>
-          )
-        })}
-        <Typography variant="h5" gutterBottom>
-          Month By Month Video Views
-        </Typography>
-        {months.map((value,key) => {
-          return (
-            <Card>
-              <CardHeader
-                avatar={
-                  <Avatar aria-label="Channel name">
-                    R
-                  </Avatar>
-                }
-                title={value[0]}
-                subheader=""
-              />
-              <CardContent>
-                <Typography variant='subtitle2' gutterBottom>
-                  Stats
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Number of videos watched: {value[1]}
-                </Typography>
-              </CardContent>
-            </Card>
-          )
-        })}
+      <Typography variant="h5" gutterBottom>
+        Your Top Channels
+      </Typography>
+      {topChannels.slice(0, 5).map((value,key) => {
+        const channelName = value[0];
+        const nameSplit = channelName.split(' ');
+        const initials = nameSplit.length > 1 ? `${nameSplit[0].charAt(0)}${nameSplit[1].charAt(0)}` : nameSplit[0].charAt(0);
+        return (
+          <Card>
+            <CardHeader
+              avatar={
+                <Avatar aria-label="Channel name">
+                  {initials}
+                </Avatar>
+              }
+              title={channelName}
+              subheader=""
+            />
+            <CardContent>
+              <Typography variant='subtitle2' gutterBottom>
+                Stats
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                Number of videos watched: {value[1]}
+              </Typography>
+            </CardContent>
+          </Card>
+        )
+      })}
+      <Typography variant="h5" gutterBottom>
+        Your Top Videos
+      </Typography>
+      {topVideos.slice(0, 5).map((value,key) => {
+        const videoName = value[0];
+        const nameSplit = videoName.split(' ');
+        return (
+          <Card>
+            <CardHeader
+              avatar={
+                <Avatar aria-label="Channel name">
+                  {nameSplit[0].charAt(0)}
+                </Avatar>
+              }
+              title={value[0]}
+              subheader=""
+            />
+            <CardContent>
+              <Typography variant='subtitle2' gutterBottom>
+                Stats
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                Number of times watched: {value[1]}
+              </Typography>
+            </CardContent>
+          </Card>
+        )
+      })}
+      <Typography variant="h5" gutterBottom>
+        Month By Month Video Views
+      </Typography>
+      {months.map((value,key) => {
+        return (
+          <Card>
+            <CardHeader
+              avatar={
+                <Avatar aria-label="Channel name">
+                  {value[0].charAt(0)}
+                </Avatar>
+              }
+              title={value[0]}
+              subheader=""
+            />
+            <CardContent>
+              <Typography variant='subtitle2' gutterBottom>
+                Stats
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                Number of videos watched: {value[1]}
+              </Typography>
+            </CardContent>
+          </Card>
+        )
+      })}
     </>
   )
 }

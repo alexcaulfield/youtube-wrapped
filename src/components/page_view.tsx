@@ -23,13 +23,35 @@ const PageView = () => {
   const renderStep = (): JSX.Element => {
     switch (activeStep) {
       case -1:
-        return <Landing setActiveStep={setActiveStep} />;
+        return (
+          <Landing 
+            setActiveStep={setActiveStep} 
+          />
+        );
       case 0:
-        return <GoogleTakeout setActiveStep={setActiveStep}/>;
+        return (
+          <GoogleTakeout 
+            setActiveStep={setActiveStep}
+          />
+        );
       case 1:
-        return <DataInput setTopChannels={setTopChannels} setTopVideos={setTopVideos} setActiveStep={setActiveStep} setMonths={setMonths} />;
+        return (
+          <DataInput 
+            setTopChannels={setTopChannels}
+            setTopVideos={setTopVideos} 
+            setActiveStep={setActiveStep} 
+            setMonths={setMonths} 
+          />
+        );
       case 2:
-        return <Results topChannels={topChannels} topVideos={topVideos} months={months} setActiveStep={setActiveStep}/>;
+        return (
+          <Results
+            topChannels={topChannels}
+            topVideos={topVideos} 
+            months={months}
+            setActiveStep={setActiveStep}
+          />
+        );
     }
   }
   return (
