@@ -7,11 +7,11 @@ import moment from "moment";
 
 const DataInput = ({setTopChannels, setTopVideos, setActiveStep, setMonths}) => {
   const now = moment.utc(new Date(), 'YYYY');
-  const [selectedDate, handleDateChange] = useState(now);
+  const [selectedDate, setSelectedDate] = useState(now);
 
   // https://github.com/mui-org/material-ui-pickers/issues/359#issuecomment-663489312
-  const dateChange = (date) => {
-    handleDateChange(moment(date.toDate()))
+  const handleDateChange = (date) => {
+    setSelectedDate(moment(date.toDate()))
   }
 
   const loadHistoryData = event => {
@@ -56,7 +56,7 @@ const DataInput = ({setTopChannels, setTopVideos, setActiveStep, setMonths}) => 
         views={["year"]}
         label="Wrapped Year"
         value={selectedDate}
-        onChange={dateChange}
+        onChange={handleDateChange}
       />
       <form>   
         <input
