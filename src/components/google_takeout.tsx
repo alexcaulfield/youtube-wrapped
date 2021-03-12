@@ -83,14 +83,14 @@ const GoogleTakeout = ({setActiveStep}) => {
     <div className={classes.imgContainer}>
       <div className={classes.imgColumn}>
         <Typography variant="body1" gutterBottom className={classes.body}>
-          Google Takeout landing page
+          Google Takeout landing page - Deselect all
         </Typography>
         <Img
           fixed={images.imgOne.childImageSharp.fixed}
           alt="Google Takeout Landing"
         />
         <Typography variant="body1" gutterBottom className={classes.body}>
-          YouTube section
+          Select the YouTube section
         </Typography>
         <Img
           fixed={images.imgTwo.childImageSharp.fixed}
@@ -99,7 +99,7 @@ const GoogleTakeout = ({setActiveStep}) => {
       </div>
       <div className={classes.imgColumn}>
         <Typography variant="body1" gutterBottom className={classes.body}>
-          Required data to request for this app
+          Select just the required data to request for this app
         </Typography>
         <Img
           fixed={images.imgThree.childImageSharp.fixed}
